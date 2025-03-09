@@ -15,12 +15,3 @@ RUN pnpm install
 
 # Copy the rest of the application code
 COPY . .
-
-# Compile TypeScript to JavaScript
-RUN pnpm run build
-
-# Expose the port the app runs on
-EXPOSE 8000
-
-# Command to run the application
-CMD ["pnpm", "start"]

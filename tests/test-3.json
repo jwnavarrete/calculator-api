@@ -1,0 +1,14 @@
+{
+    "inventory": [],
+    "orders": [
+        {
+            "id": "1001",
+            "order_lines": [
+                {
+                    "sku": "A01",
+                    "quantity": 1
+                }
+            ]
+        }
+    ]
+}

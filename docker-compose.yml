@@ -1,40 +1,20 @@
 version: '3.8'
 
 services:
-  app:
+  calculate_app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: node_app
-    working_dir: /app
+    container_name: calculate_app
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
-    depends_on:
-      - db
+      - "${PORT}:${PORT}"
+    command: >
+      sh -c "pnpm build && pnpm start"
     networks:
       - app-network
-
-  db:
-    image: postgres:latest
-    container_name: postgres_db
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: M1n0T4ur0
-      POSTGRES_DB: calculator_db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    networks:
-      - app-network
-    restart: always
 
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  postgres_data:
-    driver: local

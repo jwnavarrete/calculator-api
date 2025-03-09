@@ -12,14 +12,11 @@ down:
 rebuild:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build -d
 
-logs:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) logs -f
+test:
+	docker-compose -f $(DOCKER_COMPOSE_FILE) run --rm calculate_app npm test
 
-ps:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) ps
+setup:
+	@if [ ! -f .env ]; then cp .env.example .env; fi
+	$(MAKE) up
 
-restart:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) down
-	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
-
-.PHONY: up down rebuild logs ps restart
+.PHONY: up down rebuild logs ps restart test

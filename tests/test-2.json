@@ -1,0 +1,21 @@
+{
+    "inventory": [
+        {
+            "sku": "A01",
+            "name": "Apple",
+            "stock": {
+                "count": 12,
+                "blocked": 0
+            }
+        },
+        {
+            "sku": "A03",
+            "name": "Coconut",
+            "stock": {
+                "count": 8,
+                "blocked": 0
+            }
+        }
+    ],
+    "orders": []
+}
