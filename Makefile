@@ -1,22 +1,13 @@
-# Makefile for managing Docker Compose
-# Variables
-DOCKER_COMPOSE_FILE = docker-compose.yml
-
-# Commands
 up:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
+	docker-compose up -d
 
 down:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) down
+	docker-compose down
 
 rebuild:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) up --build -d
+	docker-compose up --build -d
 
 test:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) run --rm calculate_app npm test
-
-setup:
-	@if [ ! -f .env ]; then cp .env.example .env; fi
-	$(MAKE) up
+	docker-compose run --rm app npm test
 
 .PHONY: up down rebuild logs ps restart test

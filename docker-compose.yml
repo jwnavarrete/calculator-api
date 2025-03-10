@@ -1,17 +1,15 @@
 version: '3.8'
 
 services:
-  calculate_app:
+  app:
     build:
-      context: .
+      context: .  # Usa el Dockerfile en el directorio actual
       dockerfile: Dockerfile
-    container_name: calculate_app
-    volumes:
-      - .:/app
+    container_name: calculate_app  # Nombre del contenedor
     ports:
-      - "${PORT}:${PORT}"
-    command: >
-      sh -c "pnpm build && pnpm start"
+      - "3000:3000"  # Expone el puerto 3000 (ajusta según tu aplicación)
+    environment:
+      - NODE_ENV=development  # Establece el entorno
     networks:
       - app-network
 

@@ -92,7 +92,7 @@ Develop a code that receives a JSON of orders and inventory and returns the inve
 
 ### Without Container
 
-1. Ensure you have Node.js 20 installed.
+1. Ensure you have the latest version of Node.js installed.
 2. Install dependencies with `pnpm install`.
 3. Run the development server with `pnpm dev`.
 4. Build the project with `pnpm build`.
@@ -101,6 +101,5 @@ Develop a code that receives a JSON of orders and inventory and returns the inve
 ### With Container
 
 1. Ensure you have Docker installed.
-2. Set up the container with `make setup`.
-3. Start the container on port 3000 with `make start`.
-4. Run tests in the container with `make test`.
+2. Start the container on port 3000 with `make up`.
+3. Run tests in the container with `make test`.

@@ -1,17 +1,25 @@
-# Use the official Node.js image as the base image
-FROM node:latest
+# Usa la imagen oficial de Node.js
+FROM node:current-alpine
 
-# Install pnpm globally
+# Instala pnpm globalmente
 RUN npm install -g pnpm
 
-# Set the working directory
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copy package.json and pnpm-lock.yaml
+# Copia los archivos de configuración de pnpm
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies
+# Instala las dependencias del proyecto
 RUN pnpm install
 
-# Copy the rest of the application code
+# Copia el resto del código
 COPY . .
+
+# Construye la aplicación (si es necesario)
+RUN pnpm build
+
+EXPOSE 3000
+
+# Comando para ejecutar la aplicación
+CMD ["pnpm", "start"]
